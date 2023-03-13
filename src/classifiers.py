@@ -34,11 +34,6 @@ class Classifier:
 
         self.all_classes = all_classes
 
-        print(f">>> self.train_subjects:")
-        print(self.train_subjects)
-        print(f">>> self.all_classes:")
-        print(self.all_classes)
-
         self.train_targets = preprocessing.label_binarize(
             self.train_subjects, classes=all_classes
         )
