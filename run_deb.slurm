@@ -12,7 +12,7 @@
 
 #SBATCH --job-name="deb"
 #SBATCH --account=punim1623
-#SBATCH --time=0-00:30:00
+#SBATCH --time=0-00:20:00
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=2
@@ -27,7 +27,7 @@ module purge
 eval "$(conda shell.bash hook)"
 conda activate fed
 
-CUDA_VISIBLE_DEVICES=0,1,2,3 python src/system_test.py
+CUDA_VISIBLE_DEVICES=0,1,2,3 python system_test.py
 
 ##Log this job's resource usage stats###
 my-job-stats -a -n -s
