@@ -40,13 +40,13 @@ class Classifier:
         print(self.all_classes)
 
         self.train_targets = preprocessing.label_binarize(
-            self.train_subjects, all_classes
+            self.train_subjects, classes=all_classes
         )
         self.test_targets = preprocessing.label_binarize(
-            self.test_subjects, self.all_classes
+            self.test_subjects, classes=self.all_classes
         )
         self.has_node_targets = preprocessing.label_binarize(
-            self.has_node_subjects, self.all_classes
+            self.has_node_subjects, classes=self.all_classes
         )
 
         self.batch_size = config.batch_size
