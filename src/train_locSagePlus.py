@@ -178,7 +178,7 @@ class LocalOwner:
         self.all_targets_feat = torch.tensor(self.all_targets_feat)
         self.all_targets_subj = torch.tensor(self.all_targets_subj)
         self.train_ilocs = self.hasG_hide.node_ids_to_ilocs(self.train_ids).astype(
-            np.int32
+            np.long
         )
         self.test_ilocs = self.hasG_hide.node_ids_to_ilocs(self.test_ids).astype(
             np.int32
@@ -257,9 +257,9 @@ class LocalOwner:
         output_nc = output_nc.view(
             len(self.all_ids) + len(self.all_ids) * self.num_pred, self.num_classes
         )
-        print(f">>>>> self.train_ilocs: {self.train_ilocs}")
+        print(f">>>>> self.train_ilocs: {self.train_ilocs}")  # TODO: remove me
         loss_train_missing = F.smooth_l1_loss(
-            output_missing[self.train_ilocs.long()].float(),
+            output_missing[self.train_ilocs].float(),
             self.all_targets_missing[self.train_ilocs].reshape(-1).float(),
         )
 
@@ -267,7 +267,7 @@ class LocalOwner:
             feat_loss.greedy_loss(
                 output_feat[self.train_ilocs],
                 self.all_targets_feat[self.train_ilocs],
-                output_missing[self.train_ilocs.long()],
+                output_missing[self.train_ilocs],
                 self.all_targets_missing[self.train_ilocs],
             )
             .unsqueeze(0)
@@ -283,7 +283,7 @@ class LocalOwner:
         loss_train_label = F.cross_entropy(output_nc[self.train_ilocs], true_nc_label)
 
         acc_train_missing = self.accuracy_missing(
-            output_missing[self.train_ilocs.long()],
+            output_missing[self.train_ilocs],
             self.all_targets_missing[self.train_ilocs],
         )
         acc_train_nc = self.accuracy(
