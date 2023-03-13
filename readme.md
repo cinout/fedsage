@@ -5,7 +5,7 @@
 3. Open file ~/nips_code/src/utils/config.py;
 4. Replace the "change_to_your_current_path" in line 2 of config.py
    (**root_path= "change_to_your_current_path"**) to your current path; - You can change hyper-parameters in config.py according to different testing scenarios;
-5. Run the whole pipline with 'python ~/nips_code/src/run_system_test.py'.
+5. Run the whole pipline with 'python ~/nips_code/src/exe_test.py'.
 
 # If you find this work useful for your research, please cite
 

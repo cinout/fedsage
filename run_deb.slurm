@@ -27,7 +27,7 @@ module purge
 eval "$(conda shell.bash hook)"
 conda activate fed
 
-CUDA_VISIBLE_DEVICES=0,1,2,3 python run_system_test.py
+CUDA_VISIBLE_DEVICES=0,1,2,3 python exe_test.py
 
 ##Log this job's resource usage stats###
 my-job-stats -a -n -s
