@@ -257,6 +257,7 @@ class LocalOwner:
         output_nc = output_nc.view(
             len(self.all_ids) + len(self.all_ids) * self.num_pred, self.num_classes
         )
+        print(f">>>>> self.train_ilocs: {self.train_ilocs}")
         loss_train_missing = F.smooth_l1_loss(
             output_missing[self.train_ilocs].float(),
             self.all_targets_missing[self.train_ilocs].reshape(-1).float(),
