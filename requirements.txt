@@ -8,3 +8,7 @@ scipy==1.6.0
 stellargraph==1.2.1
 tensorflow==2.4.1
 torch==1.8.0
+
+
+conda install pytorch==1.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
+conda install -c conda-forge tensorflow=2.4.1
