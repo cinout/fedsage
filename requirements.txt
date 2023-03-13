@@ -12,3 +12,10 @@ torch==1.8.0
 
 conda install pytorch==1.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 conda install -c conda-forge tensorflow=2.4.1
+conda install -c anaconda networkx
+conda install -c conda-forge dill
+conda install -c conda-forge keras=2.4.3
+conda install -c conda-forge louvain=0.7.0
+conda install pandas=1.2.1
+conda install scikit-learn
+conda install -c stellargraph stellargraph

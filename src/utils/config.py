@@ -1,6 +1,6 @@
 import torch
 
-root_path = "."
+root_path = "./"
 
 seed = 2021
 no_cuda = False
