@@ -259,7 +259,7 @@ class LocalOwner:
         )
         print(f">>>>> self.train_ilocs: {self.train_ilocs}")
         loss_train_missing = F.smooth_l1_loss(
-            output_missing[self.train_ilocs].float(),
+            output_missing[self.train_ilocs.long()].float(),
             self.all_targets_missing[self.train_ilocs].reshape(-1).float(),
         )
 
@@ -267,7 +267,7 @@ class LocalOwner:
             feat_loss.greedy_loss(
                 output_feat[self.train_ilocs],
                 self.all_targets_feat[self.train_ilocs],
-                output_missing[self.train_ilocs],
+                output_missing[self.train_ilocs.long()],
                 self.all_targets_missing[self.train_ilocs],
             )
             .unsqueeze(0)
@@ -283,7 +283,8 @@ class LocalOwner:
         loss_train_label = F.cross_entropy(output_nc[self.train_ilocs], true_nc_label)
 
         acc_train_missing = self.accuracy_missing(
-            output_missing[self.train_ilocs], self.all_targets_missing[self.train_ilocs]
+            output_missing[self.train_ilocs.long()],
+            self.all_targets_missing[self.train_ilocs],
         )
         acc_train_nc = self.accuracy(
             output_nc[self.train_ilocs], self.all_targets_subj[self.train_ilocs]
